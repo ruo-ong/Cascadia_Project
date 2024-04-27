@@ -12,14 +12,13 @@ public class PlayerBoard {
     private ArrayList<Integer> firstTileBiomeScoring = new ArrayList<>();
     private ArrayList<Integer> biomeScoring = new ArrayList<>();
     private int natureTokens = 0;
-    private int max
+    private int max;
 
     public PlayerBoard() {
         board = new Hexagon[20][20];
-        Hexagon h;
         for(int i = 0; i < 20; i++) {
             for(int j = 0; j < 20; j++) {
-                h = new Hexagon(i, j);
+                board[i][j] = new Hexagon(i, j);
             }
         }
     }
@@ -111,8 +110,6 @@ public class PlayerBoard {
     }
 
     //biome scoring
-    public
-
     public int calculateBiomes(int biomeType) {
         int max = 0;
         for (int r = 0; r < 42; r++) {
@@ -121,7 +118,7 @@ public class PlayerBoard {
                 if (!(h.getHabitatTile() == null)) {
                     if (h.getHabitatTile().getBiome1().getType()== biomeType){
                         if(!h.getHabitatTile().getBiome1().isScored()){
-                            int size = 1 + mountainSize(r, c, 1, biomeType);
+                            int size = 1 + getSize(r, c, 1, biomeType);
                             if (size > max) {
                                 max = size;
                             }
@@ -172,8 +169,11 @@ public class PlayerBoard {
             if (hex != null) {
                 if(hex.getHabitatTile() != null){
                     if(hex.getHabitatTile().getBiomes().get(x).getType() == type){
-                        if(!hex.getHabitatTile().getMountainChecked())
-                        cnt += 1 + getSize(hex.getRow(), hex.getColumn());
+                        if(hex.getHabitatTile().getBiomes().get(x).getType() == board[r][c].getHabitatTile().getBiome1().getType()){
+                            cnt += 1 + getSize(hex.getRow(), hex.getColumn(), 1, type);
+                        } else if(hex.getHabitatTile().getBiomes().get(x).getType() == board[r][c].getHabitatTile().getBiome2().getType()){
+                            cnt += 1 + getSize(hex.getRow(), hex.getColumn(), 2, type);
+                        }
                     }
                 }
             }
@@ -182,7 +182,7 @@ public class PlayerBoard {
     }
 
     //animal scoring
-    public int calculateElk(int rC, int cC){
+    public int calculateElk(){
         int elkCnt = 0;
         //1 Bear, 2 Elk, 3 Salmon, 4 Hawk, 5 Fox
         for(int i = 0; i < 20; i++) {
@@ -227,7 +227,7 @@ public class PlayerBoard {
         }
     }
 
-    public int calculateSalmon(int rC, int cC){
+    public int calculateSalmon(){
         int salmonCnt = 0;
         //1 Bear, 2 Elk, 3 Salmon, 4 Hawk, 5 Fox
         for(int i = 0; i < 20; i++){
@@ -475,7 +475,7 @@ public class PlayerBoard {
         return false;
     }
 
-    public int calculateFox(int rC, int cC){
+    public int calculateFox(){
         int FoxCnt = 0;
         for(int i = 0; i < 20; i++){
             for(int j = 0; j < 20; j++){

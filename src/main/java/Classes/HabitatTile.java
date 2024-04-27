@@ -15,9 +15,7 @@ import java.nio.channels.ReadableByteChannel;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-
 import static java.lang.System.*;
-
 import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.TreeMap;
@@ -32,12 +30,9 @@ public class HabitatTile {
     private Boolean clicked;
     private Boolean placed;
     private Boolean keyStone;
-    private int animal1, animal2, animal3;
-    private int side0, side1, side2, side3, side4, side5;
     private BufferedImage image;
     private ArrayList <BufferedImage> tiles = new ArrayList<BufferedImage>();
     private String tileNumber;
-    private BufferedImage img;
 
     public HabitatTile(ArrayList<AnimalToken> t, ArrayList<Biome> b, boolean k, BufferedImage i) {
         tokens = t;
@@ -47,7 +42,7 @@ public class HabitatTile {
         clicked = false;
         placed = false;
         keyStone = k;
-        img = i;
+        image = i;
     }
 
     public HabitatTile(String tileNumber, int type1, int type2, int animal1, int animal2, int animal3, BufferedImage image){
@@ -187,9 +182,6 @@ public class HabitatTile {
     }
 
     //get methods
-    public ArrayList<Biome> getBiomes() {
-        return biomes;
-    }
 
     public Biome getBiome1() {
         return biome1;
@@ -197,6 +189,10 @@ public class HabitatTile {
 
     public Biome getBiome2() {
         return biome2;
+    }
+
+    public ArrayList<Biome> getBiomes() {
+        return biomes;
     }
 
     public ArrayList<AnimalToken> getTokens() {
@@ -224,7 +220,7 @@ public class HabitatTile {
     }
 
     public BufferedImage getImg() {
-        return img;
+        return image;
     }
 
     public AnimalToken getCorrespondingToken() {

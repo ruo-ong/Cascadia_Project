@@ -6,11 +6,12 @@ import java.util.*;
 import java.util.stream.Collectors;
 public class Player {
     private PlayerBoard playerBoard;
-    private  int turnsLeft;
+    private int turnsLeft;
     private boolean isTurn;
 
     public Player(boolean b){
         isTurn = b;
+        playerBoard = new PlayerBoard();
     }
 
     public PlayerBoard getPlayerBoard() {
