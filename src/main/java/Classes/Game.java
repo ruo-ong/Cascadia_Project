@@ -2,6 +2,7 @@ package Classes;
 
 import Graphics.GamePanel;
 
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class Game {
@@ -10,14 +11,16 @@ public class Game {
     private ArrayList <Player> playerList = new ArrayList();
     private  ArrayList <AnimalToken> allTokens = new ArrayList();
     private  ArrayList <HabitatTile> allHabitats = new ArrayList();
+    private  ArrayList <HabitatTile> startingTiles = new ArrayList();
     private  HabitatDashBoard availableHabitats;
+    private ArrayList<Integer> tokenCount = new ArrayList();
 
 
     //Initializes All images and image objects
     public void initializeImages() {
         //1 Bear, 2 Elk, 3 Salmon, 4 Hawk, 5 Fox
         //1 river, 2 wetland, 3 forest, 4 mountain, 5 prairie
-        allHabitats.add(new HabitatTile("1", 5, 2, 3, 2, 5, GamePanel.Tile1));
+        allHabitats.add(new HabitatTile("1", 2, 5, 3, 2, 5, GamePanel.Tile1));
         allHabitats.add(new HabitatTile("2", 5, 3, 3, 2, 5, GamePanel.Tile2));
         allHabitats.add(new HabitatTile("3", 2, 4, 3, 2, 1, GamePanel.Tile3));
         allHabitats.add(new HabitatTile("4", 2, 3, 3, 2, 4, GamePanel.Tile4));
@@ -25,7 +28,7 @@ public class Game {
         allHabitats.add(new HabitatTile("6", 4, 1, 3, 1, 4, GamePanel.Tile6));
         allHabitats.add(new HabitatTile("7", 1, 5, 3, 1, 5, GamePanel.Tile7));
         allHabitats.add(new HabitatTile("8", 1, 2, 3, 1, 4, GamePanel.Tile8));
-        allHabitats.add(new HabitatTile("9", 5, 3, 3, 2, 5, GamePanel.Tile9));
+        allHabitats.add(new HabitatTile("9", 2, 5, 3, 4, 5, GamePanel.Tile9));
         allHabitats.add(new HabitatTile("10",3, 4, 4, 2, 1, GamePanel.Tile10));
         allHabitats.add(new HabitatTile("11",1, 3, 4, 2, 5, GamePanel.Tile11));
         allHabitats.add(new HabitatTile("12",1, 5, 5, 1, 4, GamePanel.Tile12));
@@ -75,21 +78,21 @@ public class Game {
         allHabitats.add(new HabitatTile("56",5, 4, 1, 3,            GamePanel.Tile56));
 
 
-        allHabitats.add(new HabitatTile("1", 3, 2, true, GamePanel.st1IndividualTop));
-        allHabitats.add(new HabitatTile("1", 2, 5, 5, 3, false, GamePanel.st1IndividualRight));
-        allHabitats.add(new HabitatTile("1", 1, 4, 4, 2, 1, false, GamePanel.st1IndividualLeft));
-        allHabitats.add(new HabitatTile("2", 5,5, true, GamePanel.st2IndividualTop));
-        allHabitats.add(new HabitatTile("2", 3, 4, 1, 2, false, GamePanel.st2IndividualRight));
-        allHabitats.add(new HabitatTile("2", 4, 2, 3, 4, 5, false, GamePanel.st2IndividualLeft));
-        allHabitats.add(new HabitatTile("3", 2,4, true, GamePanel.st3IndividualTop));
-        allHabitats.add(new HabitatTile("3", 5, 4, 1, 5, false, GamePanel.st3IndividualRight));
-        allHabitats.add(new HabitatTile("3", 3, 1, 3, 2, 4, false, GamePanel.st3IndividualLeft));
-        allHabitats.add(new HabitatTile("4", 4,1, true, GamePanel.st4IndividualTop));
-        allHabitats.add(new HabitatTile("4", 1, 5, 3, 1, false, GamePanel.st4IndividualRight));
-        allHabitats.add(new HabitatTile("4", 2, 3, 4, 2, 5, false, GamePanel.st4IndividualLeft));
-        allHabitats.add(new HabitatTile("5", 1,3, true, GamePanel.st5IndividualTop));
-        allHabitats.add(new HabitatTile("5", 4, 2, 5, 4, false, GamePanel.st5IndividualRight));
-        allHabitats.add(new HabitatTile("5", 3, 5, 3, 2, 1, false, GamePanel.st5IndividualLeft));
+        startingTiles.add(new HabitatTile("1", 3, 2, true, GamePanel.st1IndividualTop));
+        startingTiles.add(new HabitatTile("1", 2, 5, 5, 3, false, GamePanel.st1IndividualRight));
+        startingTiles.add(new HabitatTile("1", 1, 4, 4, 2, 1, false, GamePanel.st1IndividualLeft));
+        startingTiles.add(new HabitatTile("2", 5,5, true, GamePanel.st2IndividualTop));
+        startingTiles.add(new HabitatTile("2", 3, 4, 1, 2, false, GamePanel.st2IndividualRight));
+        startingTiles.add(new HabitatTile("2", 4, 2, 3, 4, 5, false, GamePanel.st2IndividualLeft));
+        startingTiles.add(new HabitatTile("3", 2,4, true, GamePanel.st3IndividualTop));
+        startingTiles.add(new HabitatTile("3", 5, 4, 1, 5, false, GamePanel.st3IndividualRight));
+        startingTiles.add(new HabitatTile("3", 3, 1, 3, 2, 4, false, GamePanel.st3IndividualLeft));
+        startingTiles.add(new HabitatTile("4", 4,1, true, GamePanel.st4IndividualTop));
+        startingTiles.add(new HabitatTile("4", 1, 5, 3, 1, false, GamePanel.st4IndividualRight));
+        startingTiles.add(new HabitatTile("4", 2, 3, 4, 2, 5, false, GamePanel.st4IndividualLeft));
+        startingTiles.add(new HabitatTile("5", 1,3, true, GamePanel.st5IndividualTop));
+        startingTiles.add(new HabitatTile("5", 4, 2, 5, 4, false, GamePanel.st5IndividualRight));
+        startingTiles.add(new HabitatTile("5", 3, 5, 3, 2, 1, false, GamePanel.st5IndividualLeft));
 
 
         allHabitats.add(new HabitatTile("1", 5, 2, true, GamePanel.keyStoneTile1));
@@ -129,24 +132,75 @@ public class Game {
     public Game(int numOfPlayers){
         initializeImages();
         turn = 0;
+        for(int i = 0; i < 5; i++){
+            tokenCount.add(20);
+        }
 
         //player instantiation
         Player p;
-        p = new Player(true);
-        playerList.add(p);
-        for(int i=1;i<numOfPlayers;i++){
-            p = new Player(false);
+        for(int i=0;i<3;i++){
+            if(i == 0){
+                p = new Player(true);
+            } else{
+                p = new Player(false);
+            }
             playerList.add(p);
+            p.getPlayerBoard().getBoard()[9][9].setHabitatTile(startingTiles.get(0));
+            startingTiles.remove(0);
+            p.getPlayerBoard().getBoard()[10][10].setHabitatTile(startingTiles.get(0));
+            startingTiles.remove(0);
+            p.getPlayerBoard().getBoard()[10][9].setHabitatTile(startingTiles.get(0));
+            startingTiles.remove(0);
         }
 
         //availableHabitats instantiation
-
         ArrayList<HabitatTile> h = new ArrayList<>();
         for(int i=0;i<4;i++){
             int num = (int)(Math.random() *(allHabitats.size()));
             h.add(allHabitats.get(num));
+            allHabitats.remove(num);
+
+            h.get(i).setCorrespondingToken(generateAnimalToken());
         }
         availableHabitats = new HabitatDashBoard(h);
+        if(checkFourSameToken()){
+            replaceFourSameTokens();
+        }
+    }
+
+    public AnimalToken generateAnimalToken(){
+        AnimalToken a = null;
+        boolean temp = true;
+        while(temp) {
+            int rand = (int) ((Math.random() * (4)) + 1);
+            //1 Bear, 2 Elk, 3 Salmon, 4 Hawk, 5 Fox
+            if (rand == 1 && tokenCount.get(0) > 0) {
+                a = new AnimalToken(rand, GamePanel.bearAnimalToken);
+                tokenCount.set(0, tokenCount.get(0) -1);
+                temp = false;
+            } else if (rand == 2 && tokenCount.get(1) > 0) {
+                a = new AnimalToken(rand, GamePanel.elkAnimalToken);
+                tokenCount.set(1, tokenCount.get(1) -1);
+                temp = false;
+            } else if (rand == 3 && tokenCount.get(2) > 0) {
+                a = new AnimalToken(rand, GamePanel.salmonAnimalToken);
+                tokenCount.set(2, tokenCount.get(2) -1);
+                temp = false;
+            } else if (rand == 4 && tokenCount.get(3) > 0) {
+                a = new AnimalToken(rand, GamePanel.hawkAnimalToken);
+                tokenCount.set(3, tokenCount.get(3) -1);
+                temp = false;
+            } else if (rand == 5 && tokenCount.get(4) > 0) {
+                a = new AnimalToken(rand, GamePanel.foxAnimalToken);
+                tokenCount.set(4, tokenCount.get(4) -1);
+                temp = false;
+            }
+        }
+        return a;
+    }
+
+    public ArrayList<Integer> getTokenCount() {
+        return tokenCount;
     }
 
     public ArrayList<AnimalToken> getAllTokens () {
@@ -171,14 +225,10 @@ public class Game {
         return availableHabitats;
     }
 
-    public HabitatDashBoard clickedAnimalToken(int n){
-        AnimalToken a = availableHabitats.get(n).getCorrespondingToken();
-        a.setClicked(true);
-        availableHabitats.get(n).setClicked(true);
-        return availableHabitats;
-    }
-
     public HabitatDashBoard clickedHabitatTile(int n){
+        for(HabitatTile h: allHabitats){
+            h.setClicked(false);
+        }
         AnimalToken a = availableHabitats.get(n).getCorrespondingToken();
         a.setClicked(true);
         availableHabitats.get(n).setClicked(true);
@@ -199,35 +249,83 @@ public class Game {
         return availableHabitats;
     }
 
-    public HabitatDashBoard placedHabitat (int num, int row, int col, Player p, boolean usedCorrespondingToken) {
+    public void placedHabitat (int num, int row, int col, Player p) {
         if(p.getTurnsLeft() > 0) {
-            availableHabitats.get(num).setClicked(false);
-            availableHabitats.get(num).getCorrespondingToken().setClicked(false);
-
-            //if they used the corresponding animal token and didn't discard it
-            if (usedCorrespondingToken) {
-                availableHabitats.get(num).setTokenPlaced(availableHabitats.get(num).getCorrespondingToken());
-            }
-
             //placing habitat in board
             Hexagon[][] b = p.getPlayerBoard().getBoard();
             b[row][col].setHabitatTile(availableHabitats.get(num));
-
-            //updating habitatDashboard
-            availableHabitats.get(num).setPlaced(true);
-            availableHabitats.removeHabitat(num);
-            int rand = (int) (Math.random() * (allHabitats.size()));
-            availableHabitats.addHabitat(allHabitats.get(rand));
         }
-            //updating player turn
-            p.setTurnsLeft(p.getTurnsLeft() - 1);
-            p.setTurn(false);
+    }
+
+    public boolean habitatCanBePlaced(int row, int col, Player p) {
+        PlayerBoard pb = playerList.get(turn).getPlayerBoard();
+        ArrayList<Hexagon> surrounding = pb.getAdjacentHexagons(row, col);
+        if(pb.getBoard()[row][col].getHabitatTile() == null){
+            for(Hexagon h : surrounding){
+                if(!h.getGray() || h.getHabitatTile() != null){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean animalCanBePlaced(int num, int row, int col, Player p) {
+        PlayerBoard pb = playerList.get(turn).getPlayerBoard();
+        System.out.print(row + " ");
+        System.out.print(col + " ");
+        if(pb.getBoard()[row][col].getHabitatTile() != null){
+            ArrayList<AnimalToken> token = pb.getBoard()[row][col].getHabitatTile().getTokens();
+            for(AnimalToken a : token){
+                if(a.getType() == availableHabitats.getDashboard().get(num).getCorrespondingToken().getType()){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void placedAnimalToken(int num, int row, int col, Player p) {
+        if(p.getTurnsLeft() > 0) {
+            availableHabitats.get(num).setClicked(false);
+            p.getPlayerBoard().getBoard()[row][col].setGray(false);
+            availableHabitats.get(num).getCorrespondingToken().setClicked(false);
+
             turn++;
-            if (turn == playerList.size()) {
+            if(turn == 3){
                 turn = 0;
             }
-            playerList.get(turn).setTurn(true);
-        return availableHabitats;
+            p.getPlayerBoard().getBoard()[row][col].getHabitatTile().setTokenPlaced(availableHabitats.get(num).getCorrespondingToken());
+        }
+
+        //updating habitatDashboard
+        availableHabitats.get(num).setPlaced(true);
+        availableHabitats.removeHabitat(num);
+        int rand = (int) (Math.random() * (allHabitats.size()));
+        availableHabitats.addHabitat(allHabitats.get(rand));
+        rand = (int) ((Math.random() * (4)) + 1);
+        AnimalToken a;
+        if(rand == 1){
+            a = new AnimalToken(rand, GamePanel.bearAnimalToken);
+        } else if(rand == 2){
+            a = new AnimalToken(rand, GamePanel.elkAnimalToken);
+        } else if(rand == 3){
+            a = new AnimalToken(rand, GamePanel.salmonAnimalToken);
+        } else if(rand == 4){
+            a = new AnimalToken(rand, GamePanel.hawkAnimalToken);
+        } else {
+            a = new AnimalToken(rand, GamePanel.foxAnimalToken);
+        }
+        availableHabitats.get(availableHabitats.getDashboard().size()- 1).setCorrespondingToken(a);
+        if(checkFourSameToken()){
+            replaceFourSameTokens();
+        }
+        //updating player turn
+        p.setTurnsLeft(p.getTurnsLeft() - 1);
+        turn++;
+        if (turn == 3) {
+            turn = 0;
+        }
     }
 
     public void replaceFourSameTokens(){
